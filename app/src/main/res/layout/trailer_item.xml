@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/MovieTrailerItem"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/trailer_thumbnail_image_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:contentDescription="@string/activity_detail_trailer_thumbnail_content_description" />
+
+    <LinearLayout
+        android:id="@+id/trailer_play_button_layout"
+        android:layout_width="30sp"
+        android:layout_height="30sp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginLeft="70dp"
+        android:layout_toRightOf="@id/trailer_thumbnail_image_view"
+        android:background="?selectableItemBackgroundBorderless"
+        android:orientation="vertical">
+
+        <com.github.zagum.switchicon.SwitchIconView
+            android:id="@+id/trailer_play_switch_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5sp"
+            app:si_animation_duration="1000"
+            app:si_disabled_color="#9E9E9E"
+            app:si_enabled="true"
+            app:si_no_dash="true"
+            app:si_tint_color="#F44336"
+            app:srcCompat="@drawable/ic_stat_name" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/movie_trailer_text_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/trailer_thumbnail_image_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
+
+</RelativeLayout>

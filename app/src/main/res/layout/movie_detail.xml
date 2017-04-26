@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp">
+
+        <TextView
+            android:id="@+id/movie_title"
+            style="@style/AppTheme.MovieTitle"
+            android:layout_height="120dp"
+            tools:text="Movie Title"
+            android:layout_width="match_parent"
+            />
+
+        <ImageView
+            style="@style/AppTheme.MoviePoster"
+            android:contentDescription="@string/content_movie_poster"
+            android:id="@+id/tv_movie_poster"
+            android:adjustViewBounds="true"
+            android:layout_alignParentLeft="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/movie_title"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/release_date"
+            android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="release date"
+            android:layout_marginTop="8dp"
+            android:layout_toEndOf="@+id/tv_movie_poster"
+            android:layout_below="@+id/movie_title"
+            android:layout_marginStart="16dp" />
+
+        <LinearLayout
+            android:id="@+id/avg_rating_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/tv_movie_poster"
+            android:layout_below="@+id/release_date"
+            android:orientation="horizontal"
+            android:layout_marginStart="8dp">
+
+            <TextView
+                android:id="@+id/movie_rating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+                tools:text="6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+                android:textColor="?android:attr/textColorSecondary"
+                android:text="@string/_10"/>
+        </LinearLayout>
+
+        <com.github.zagum.switchicon.SwitchIconView
+            android:id="@+id/button_favorite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_toEndOf="@+id/tv_movie_poster"
+            android:layout_below="@+id/avg_rating_container"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="16dp"
+            app:elevation="4dp"
+            app:pressedTranslationZ="12dp"
+            app:si_animation_duration="1000"
+            app:si_disabled_color="#9E9E9E"
+            app:si_enabled="true"
+            app:si_no_dash="false"
+            app:si_tint_color="#F44336"
+            app:srcCompat="@drawable/ic_redheart" />
+
+        <TextView
+            android:id="@+id/movie_overview"
+            style="@style/MovieOverview"
+            android:layout_below="@+id/tv_movie_poster"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            tools:text="movie overview"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp" />
+
+    <TextView
+        android:id="@+id/trailer_header"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/trailers"
+        android:textSize="18sp"
+        android:layout_below="@+id/movie_overview"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/trailer_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/trailer_header"
+            android:layout_marginStart="8dp"
+            android:nestedScrollingEnabled="true"/>
+
+        <TextView
+            android:id="@+id/review_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/trailer_view"
+            android:text="@string/reviews"
+            android:textSize="18sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/review_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/review_header"
+            android:layout_marginStart="8dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginLeft="16dp"
+            android:nestedScrollingEnabled="true"
+            />
+
+    </RelativeLayout>
+</ScrollView>

@@ -1,0 +1,103 @@
+<resources>
+    <!--Used in Action Bar, and in AndroidManifest to tell the device the name of this app.-->
+    <string name="app_name">Movies Now</string>
+    <!--Used in movie_detail.xml layout, and in AndroidManifest to tell the device the layout id-->
+    <string name="movie_details">Movie Details</string>
+    <!--Used in favorite_grid.xml layout, and in AndroidManifest to tell the device the layout id-->
+    <string name="movie_favorites">Favorite Movies</string>
+
+    <!--Used in overflow menu to refresh movie data-->
+    <string name="action_refresh">Refresh</string>
+    <!--Used in detail menu to share movie info-->
+    <string name="action_share">Share</string>
+    <!--Used in detail menu movie poster-->
+    <string name="content_movie_poster">movie_poster</string>
+    <!--Used for header in detail menu movie movie release date-->
+    <string name="header_release_date">Release Date</string>
+    <!--Used for header in detail menu movie movie rating -->
+    <string name="header_rating">Rating</string>
+
+    <!--for preferences-->
+    <!-- Settings Menu Item -->
+    <string name="main_menu_settings">Sort By</string>
+    <!--Main menu sort by top rated movies action -->
+    <string name="main_menu_action_top_rated">Top rated</string>
+    <!--Main menu sort by most popular movies action -->
+    <string name="main_menu_action_popular">Most popular</string>
+    <!--Main menu sort by favorite movies action -->
+    <string name="main_menu_action_favorites">My favorites</string>
+
+    <!--Detail menu sort by most popular movies action -->
+    <string name="action_settings">Settings</string>
+    <string name="favorite_menu">My Favorites</string>
+
+    <!-- Strings for sort_by preference settings: default is sort by most popular -->
+    <string name="settings_sort_by_label">Sort By</string>
+    <string name="settings_sort_by_key" translatable="false">sort_by</string>
+    <string name="settings_sort_by_default" translatable="false">@string/settings_sort_by_most_popular_label</string>
+
+    <!-- Strings for sort_by highest rating option  -->
+    <string name="settings_sort_by_highest_rating_label">Highest rating</string>
+    <string name="settings_sort_by_highest_rating_value" translatable="false">top_rated?</string>
+
+    <!-- Strings for sort_by most popular option  -->
+    <string name="settings_sort_by_most_popular_label">Most popular</string>
+    <string name="settings_sort_by_most_popular_value" translatable="false">popular?</string>
+
+    <!-- Strings for sort_by most favorites option  -->
+    <string name="settings_sort_by_favorites_label">My favorites</string>
+    <string name="settings_sort_by_favorites_value" translatable="false">My favorites?</string>
+
+    <!-- String for no movies found-->
+    <string name="no_movies_found">No movies found.</string>
+    <!-- String title for settings menu-->
+    <string name="settings_title">Movie feed settings</string>
+
+    <string name="title_activity_favorite">My Favorites</string>
+
+    <string name="content_authority">com.example.android.moviesnow</string>
+
+    <!-- Strings for trailers & reviews -->
+    <string name="movie_trailer_play_button">Play Trailer</string>
+    <string name="TMDb_KEY">key</string>
+    <string name="TMDb_NAME">name</string>
+    <string name="TMDb_RESULTS">results</string>
+    <string name="TMDb_ID">id</string>
+    <string name="base_trailer_part1">http://api.themoviedb.org/3/movie/</string>
+    <string name="base_trailer_part2">/videos</string>
+    <string name="base_review_part2">/reviews</string>
+    <string name="TMDb_CONTENT">content</string>
+    <string name="api">api_key</string>
+    <string name="base_video_url">https://www.youtube.com/watch?v=</string>
+
+    <!-- String for detail menu to delete single favorite from the table [CHAR LIMIT=NONE] -->
+    <string name="delete_this">Delete from favorites</string>
+
+    <!-- Toast message when current favorite was successfully deleted [CHAR LIMIT=NONE] -->
+    <string name="delete_favorite_successful">Favorite deleted</string>
+
+    <!-- Toast message in editor when current favorite has failed to be deleted [CHAR LIMIT=NONE] -->
+    <string name="delete_favorite_failed">Move was not a favorite</string>
+
+    <!-- String for favorite menu to delete all favorites from the table [CHAR LIMIT=NONE] -->
+    <string name="delete_all">Delete all favorites</string>
+
+    <!-- Toast message when all favorites are successfully deleted [CHAR LIMIT=NONE] -->
+    <string name="delete_all_favorites_successful">Favorite deleted</string>
+
+    <!-- Strings for dialog in FavoriteActivity to delete all favorites from table [CHAR LIMIT=NONE] -->
+    <string name="warning_dialog_msg_all_movies">Delete all movies from favorites list?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
+    <!-- Strings for adding a favorite [CHAR LIMIT=NONE] -->
+    <string name="in_favorites">In Favorites</string>
+    <string name="successfully_added">Favorite successfully saved!</string>
+    <string name="already_a_favorite">Movie is already a favorite</string>
+    <string name="add_favorite_failed">Failed to save favorite</string>
+    <string name="_10">/10</string>
+    <string name="trailers">Trailers:</string>
+    <string name="reviews">Reviews:</string>
+    <string name="activity_detail_trailer_thumbnail_content_description">trailer thumbnail description</string>
+
+</resources>
