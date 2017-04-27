@@ -55,7 +55,7 @@ public class MovieDetail extends AppCompatActivity {
     private List<String> movieReviewList = new ArrayList<>();
     final String POSTER_BASE_URL = "http://image.tmdb.org/t/p/";
     final String POSTER_WIDTH = "w500";
-    final String API_KEY = "aefc73e95d19c5632cac821acbcf1925";
+    final String API_KEY = "MY_KEY";
     private static final String MOVIE_SHARE_HASHTAG = "  #ILoveThisMovie";
     Cursor mCursor;
 

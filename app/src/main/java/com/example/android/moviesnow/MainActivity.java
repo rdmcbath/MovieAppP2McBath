@@ -40,7 +40,7 @@ public class MainActivity extends AppCompatActivity implements
     private static String SORT_ORDER;
     private static final int SORT_ORDER_POPULAR = 0;
     private static final int SORT_ORDER_TOP_RATED = 1;
-    final String apiKey = "aefc73e95d19c5632cac821acbcf1925";
+    final String apiKey = "MY_KEY";
 
     /**
      * Constant value for the news loader ID. We can choose any integer.
