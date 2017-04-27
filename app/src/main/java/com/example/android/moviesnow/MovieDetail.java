@@ -116,6 +116,7 @@ public class MovieDetail extends AppCompatActivity {
         favoriteSwitch.setIconEnabled(movieIsFavorite());
 
         favoriteSwitch.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
                 if (favoriteSwitch.isIconEnabled()) {
@@ -124,7 +125,7 @@ public class MovieDetail extends AppCompatActivity {
                 } else {
                     saveFavorite();
                     favoriteSwitch.switchState(true);
-                                    }
+                }
             }
         });
     }
@@ -436,6 +437,18 @@ public class MovieDetail extends AppCompatActivity {
                 selection,
                 selectionArgs,
                 null);
+
+        if (mCursor.getCount() == 0) {
+            //no movie returned, this must not exist in database.  Set button to gray
+            final SwitchIconView favoriteSwitch = (SwitchIconView) findViewById(R.id.button_favorite);
+            favoriteSwitch.setIconEnabled(false);
+            favoriteSwitch.setImageResource(R.drawable.ic_whiteheart);
+        } else {
+            //movie exists in database, set button to red
+            final SwitchIconView favoriteSwitch = (SwitchIconView) findViewById(R.id.button_favorite);
+            favoriteSwitch.setIconEnabled(true);
+            favoriteSwitch.setImageResource(R.drawable.ic_redheart);
+        }
 
         assert mCursor != null;
         if (mCursor.moveToNext()) {

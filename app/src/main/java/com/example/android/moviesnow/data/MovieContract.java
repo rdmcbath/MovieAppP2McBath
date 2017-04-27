@@ -42,6 +42,13 @@ public class MovieContract {
             return ContentUris.withAppendedId(CONTENT_URI, id);
         }
 
+        public static String getMovieCategoryOrIDFromUri(Uri movieUriWithCategory) {
+            Log.d(TAG, "getMovieCategoryOrIDFromUri: " + movieUriWithCategory);
+            String category = movieUriWithCategory.getPathSegments().get(1);
+            Log.d(TAG, "getMovieCategoryOrIDFromUri: " + category);
+            return category;
+        }
+
         /**
          * The MIME type of the {@link #CONTENT_URI} for a list of favorites.
          */

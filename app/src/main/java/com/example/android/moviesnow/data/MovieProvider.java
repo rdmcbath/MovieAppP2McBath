@@ -10,6 +10,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.util.Log;
 
+import java.util.Arrays;
+
+import static android.content.ContentValues.TAG;
+
 /**
  * {@link ContentProvider} for the app.
  *
@@ -18,6 +22,10 @@ import android.util.Log;
 public class MovieProvider extends ContentProvider {
 
     public static final String LOG_TAG = MovieProvider.class.getSimpleName();
+
+    //favorite_movie.movie_id = ?
+    private static final String favMovieID =
+            MovieContract.FavoriteEntry.COLUMN_MOVIE_ID + " = ? ";
 
     //database helper object
     private MovieDbHelper mDbHelper;
@@ -47,10 +55,41 @@ public class MovieProvider extends ContentProvider {
      */
     @Override
     public boolean onCreate() {
+        Log.d(TAG, "onCreate: DB Helper initialized");
         mDbHelper = new MovieDbHelper(getContext());
         return true;
     }
+    private Cursor getAllFavMovies() {
 
+        Log.d(TAG, "getAllFavMovies: Returning AllFav Movies Cursor");
+        return mDbHelper.getReadableDatabase().query(
+                MovieContract.FavoriteEntry.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+        );
+    }
+
+    private Cursor getFavMovieByID(Uri uri, String[] columns) {
+        String selection = favMovieID;
+        //Select all rows that belong to a particular category
+        String[] selectionArgs = new String[]{MovieContract.FavoriteEntry.getMovieCategoryOrIDFromUri(uri)};
+
+        Log.d(TAG, "getFavMovieByID: Selection: " + selection + "\n Selection Args: " + Arrays.toString(selectionArgs));
+
+        return mDbHelper.getReadableDatabase().query(
+                MovieContract.FavoriteEntry.TABLE_NAME,
+                columns,
+                selection,
+                selectionArgs,
+                null,
+                null,
+                null
+        );
+    }
     /**
      * Perform the query for the given URI. Use the given projection, selection, selection arguments, and sort order.
      */
@@ -125,6 +164,7 @@ public class MovieProvider extends ContentProvider {
      * for that specific row in the database.
      */
     private Uri insertFavorite(Uri uri, ContentValues values) {
+        Log.d(TAG, "insert: Started");
 
         // Check that the title is not null
         String title = values.getAsString(MovieContract.FavoriteEntry.COLUMN_TITLE);
@@ -264,6 +304,7 @@ public class MovieProvider extends ContentProvider {
      */
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
+
         // Get writeable database
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
 
