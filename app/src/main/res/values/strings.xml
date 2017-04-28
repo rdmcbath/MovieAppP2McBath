@@ -83,7 +83,7 @@
     <string name="delete_all">Delete all favorites</string>
 
     <!-- Toast message when all favorites are successfully deleted [CHAR LIMIT=NONE] -->
-    <string name="delete_all_favorites_successful">Favorite deleted</string>
+    <string name="delete_all_favorites_successful">Favorites deleted</string>
 
     <!-- Strings for dialog in FavoriteActivity to delete all favorites from table [CHAR LIMIT=NONE] -->
     <string name="warning_dialog_msg_all_movies">Delete all movies from favorites list?</string>

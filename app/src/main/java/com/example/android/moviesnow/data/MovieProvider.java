@@ -24,7 +24,7 @@ public class MovieProvider extends ContentProvider {
     public static final String LOG_TAG = MovieProvider.class.getSimpleName();
 
     //favorite_movie.movie_id = ?
-    private static final String favMovieID =
+    public static final String favMovieID =
             MovieContract.FavoriteEntry.COLUMN_MOVIE_ID + " = ? ";
 
     //database helper object
@@ -191,10 +191,8 @@ public class MovieProvider extends ContentProvider {
         if (releaseDate == null) {
             throw new IllegalArgumentException("Movie requires a release date");
         }
-
         // Get writable database
         SQLiteDatabase database = mDbHelper.getWritableDatabase();
-
         // Insert the new favorite with the given values
         long id = database.insert(MovieContract.FavoriteEntry.TABLE_NAME, null, values);
 

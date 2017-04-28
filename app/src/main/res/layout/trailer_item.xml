@@ -32,7 +32,7 @@
             app:si_enabled="true"
             app:si_no_dash="true"
             app:si_tint_color="#F44336"
-            app:srcCompat="@drawable/ic_stat_name" />
+            app:srcCompat="@drawable/ic_play_arrow" />
 
     </LinearLayout>
 

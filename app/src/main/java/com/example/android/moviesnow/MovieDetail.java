@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.provider.BaseColumns;
 import android.support.v4.app.ShareCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
@@ -40,6 +39,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.R.attr.id;
 import static com.example.android.moviesnow.R.id.movie_overview;
 import static com.example.android.moviesnow.R.id.movie_rating;
 import static com.example.android.moviesnow.R.id.movie_title;
@@ -55,7 +55,7 @@ public class MovieDetail extends AppCompatActivity {
     private List<String> movieReviewList = new ArrayList<>();
     final String POSTER_BASE_URL = "http://image.tmdb.org/t/p/";
     final String POSTER_WIDTH = "w500";
-    final String API_KEY = "MY_KEY";
+    final String API_KEY = "aefc73e95d19c5632cac821acbcf1925";
     private static final String MOVIE_SHARE_HASHTAG = "  #ILoveThisMovie";
     Cursor mCursor;
 
@@ -113,7 +113,7 @@ public class MovieDetail extends AppCompatActivity {
 
         //If user wants to add movie as a favorite, he will press the heart button
         final SwitchIconView favoriteSwitch = (SwitchIconView) findViewById(R.id.button_favorite);
-        favoriteSwitch.setIconEnabled(movieIsFavorite());
+        favoriteSwitch.setIconEnabled(false);
 
         favoriteSwitch.setOnClickListener(new View.OnClickListener() {
 
@@ -383,7 +383,7 @@ public class MovieDetail extends AppCompatActivity {
 
         Uri newUri = getContentResolver().insert(MovieContract.FavoriteEntry.CONTENT_URI, contentValues);
 
-        Log.v("DetailActivity", "savedFavorite, new row Uri is " + newUri);
+        Log.v("MovieDetail", "savedFavorite method, new row Uri is " + newUri);
 
         // insertion was successful and we can display a toast.
         Toast.makeText(this, R.string.successfully_added, Toast.LENGTH_SHORT).show();
@@ -424,41 +424,30 @@ public class MovieDetail extends AppCompatActivity {
         Movie currentMovie = intent.getParcelableExtra("movie");
         String title = currentMovie.getmTitle();
 
-        String selection = MovieContract.FavoriteEntry._ID + "=?";
-        String[] projection = {MovieContract.FavoriteEntry.COLUMN_TITLE};
-        String[] selectionArgs = {BaseColumns._ID};
-
         Log.i(LOG_TAG, "Movie TITLE is " + title);
 
         // This will perform a query on the favorites table to return a Cursor containing that
         // row of the table.
-        mCursor = getContentResolver().query(MovieContract.FavoriteEntry.CONTENT_URI,
-                projection,
-                selection,
-                selectionArgs,
-                null);
-
-        if (mCursor.getCount() == 0) {
-            //no movie returned, this must not exist in database.  Set button to gray
-            final SwitchIconView favoriteSwitch = (SwitchIconView) findViewById(R.id.button_favorite);
-            favoriteSwitch.setIconEnabled(false);
-            favoriteSwitch.setImageResource(R.drawable.ic_whiteheart);
-        } else {
-            //movie exists in database, set button to red
-            final SwitchIconView favoriteSwitch = (SwitchIconView) findViewById(R.id.button_favorite);
-            favoriteSwitch.setIconEnabled(true);
-            favoriteSwitch.setImageResource(R.drawable.ic_redheart);
-        }
+        mCursor = getContentResolver().query(MovieContract.FavoriteEntry
+                .buildFavMovieUri(id), null, null, null, null);
 
         assert mCursor != null;
         if (mCursor.moveToNext()) {
-            Log.d("DetailActivity", "FavoritePresent: Movie already in favorites");
-            mCursor.close();
-            return true;
-        } else {
-            Log.d("DetailActivity", "FavoritePresent: Movie not in favorites");
+            //movie exists in database, set button to red
+            Log.d("MovieDetail", "MovieIsFavorite Method: Movie already a favorite");
+            final SwitchIconView favoriteSwitch = (SwitchIconView) findViewById(R.id.button_favorite);
+            favoriteSwitch.switchState(true);
+//            favoriteSwitch.setImageResource(R.drawable.ic_redheart);
             mCursor.close();
             return false;
+        } else {
+            //no movie returned, this must not exist in database.  Set button to white
+            Log.d("MovieDetail", "MovieIsFavorite Method: Movie not yet a favorite");
+            final SwitchIconView favoriteSwitch = (SwitchIconView) findViewById(R.id.button_favorite);
+            favoriteSwitch.switchState(false);
+//            favoriteSwitch.setImageResource(R.drawable.ic_whiteheart);
+            mCursor.close();
+            return true;
         }
     }
 
